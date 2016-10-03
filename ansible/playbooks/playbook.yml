@@ -1,5 +1,5 @@
 ---
-- hosts: house_swarmie_6
+- hosts: robots
   remote_user: swarmie
   tasks:
     - name: setup sources.list
@@ -41,8 +41,23 @@
     - name: setup environment
       shell: echo "source /opt/ros/indigo/setup.bash" >> /home/swarmie/.bashrc
 
+    - name: install python-catkin-tools
+      apt: name=python-catkin-tools state=present
+      become: yes
+      become_method: sudo
+
     - name: install ros-indigo-robot-localization
       apt: name=ros-indigo-robot-localization state=present
+      become: yes
+      become_method: sudo
+
+    - name: install ros-indigo-apriltags-ros
+      apt: name=ros-indigo-apriltags-ros state=present
+      become: yes
+      become_method: sudo
+
+    - name: install ros-indigo-usb-cam
+      apt: name=ros-indigo-usb-cam state=present
       become: yes
       become_method: sudo
 
@@ -95,13 +110,13 @@
         echo "export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/swarmie/rover_workspace/devel/lib/" >> /home/swarmie/.bashrc
         chmod +x /home/swarmie/rover_workspace/run.sh
 
-    - name: copy catkin_make script to remote
-      copy: src=../scripts/make.sh dest=/home/swarmie/rover_workspace/make.sh owner=swarmie mode=0755
+    - name: copy catkin build script to remote
+      copy: src=../../scripts/build.sh dest=/home/swarmie/rover_workspace/build.sh owner=swarmie mode=0755
 
-    - name: catkin_make
-      shell: /home/swarmie/rover_workspace/make.sh
+    - name: catkin build
+      shell: /home/swarmie/rover_workspace/build.sh
       args:
         chdir: /home/swarmie/rover_workspace
 
     - name: remove catkin_make script
-      file: path=/home/swarmie/rover_workspace/make.sh state=absent
+      file: path=/home/swarmie/rover_workspace/build.sh state=absent

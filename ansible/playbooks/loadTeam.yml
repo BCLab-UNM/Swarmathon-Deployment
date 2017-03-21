@@ -1,0 +1,23 @@
+---
+- hosts: R13
+  remote_user: swarmie
+
+  vars_prompt:
+    - name: "team"
+      prompt: "Enter the team's code"
+      private: no
+
+  tasks:
+    - name: remove existing rover_workspace
+      file: path=/home/swarmie/rover_workspace state=absent
+
+    - name: move {{team}}'s archive to home directory
+      command: cp /home/swarmie/physicalTeams2017/Swarmathon-{{team}}.tar.gz /home/swarmie/Swarmathon-{{team}}.tar.gz
+
+    - name: decompress {{team}}'s archives
+      shell: tar -xvzf /home/swarmie/Swarmathon-{{team}}.tar.gz
+      # It is more apporpriate to use the unarchive ansible module, however,
+      #   the remote_src argument does not seem to work currently.
+
+    - name: remove tar file in home directory
+      file: path=/home/swarmie/Swarmathon-{{team}}.tar.gz state=absent

@@ -1,12 +1,14 @@
 ---
-- hosts: robots
+- hosts: R13
   remote_user: swarmie
   tasks:
     - name: copy uncompiled code archives
-      copy: src=/Users/JakeNichol/git/iAnt-Swarmie/physicalTeams2017/ dest=/home/swarmie/ owner=swarmie mode=0755
+      copy: src=/Users/JakeNichol/git/iAnt-Swarmie/physicalTeams2017/ dest=/home/swarmie/physicalTeams2017/ owner=swarmie mode=0755
 
     - name: copy build script
       copy: src=../../scripts/buildAllTeams.sh dest=/home/swarmie/ owner=swarmie mode=0755
 
     - name: build all teams
       shell: /home/swarmie/buildAllTeams.sh
+      args:
+        chdir: /home/swarmie/physicalTeams2017

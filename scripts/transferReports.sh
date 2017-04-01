@@ -1,6 +1,5 @@
 #!/bin/bash
 
-shopt -s extglob
 phMissing=""
 vMissing=""
 

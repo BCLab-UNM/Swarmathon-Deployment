@@ -1,9 +1,7 @@
 #!/bin/bash
 
-shopt -s extglob
-
 # Physical Teams
-cd ~/physicalTeams2017/
+cd ~/git/iAnt-Swarmie/physicalTeams2017/
 git clone git@github.com:BCLab-UNM/Swarmathon-CSUCI.git
 git clone git@github.com:BCLab-UNM/Swarmathon-JSU.git
 git clone git@github.com:BCLab-UNM/Swarmathon-PCC.git
@@ -27,33 +25,15 @@ git clone git@github.com:BCLab-UNM/Swarmathon-UDC.git
 
 git clone git@github.com:BCLab-UNM/Swarmathon-ROS.git
 
-tar -cvzf Swarmathon-CSUCI.tar.gz Swarmathon-CSUCI
-tar -cvzf Swarmathon-JSU.tar.gz Swarmathon-JSU
-tar -cvzf Swarmathon-PCC.tar.gz Swarmathon-PCC
-tar -cvzf Swarmathon-TAMIU.tar.gz Swarmathon-TAMIU
-tar -cvzf Swarmathon-UPRM.tar.gz Swarmathon-UPRM
-tar -cvzf Swarmathon-Cabrillo.tar.gz Swarmathon-Cabrillo
-tar -cvzf Swarmathon-CSULA.tar.gz Swarmathon-CSULA
-tar -cvzf Swarmathon-Morehouse.tar.gz Swarmathon-Morehouse
-tar -cvzf Swarmathon-UCM.tar.gz Swarmathon-UCM
-tar -cvzf Swarmathon-York.tar.gz Swarmathon-York
-tar -cvzf Swarmathon-DTCC.tar.gz Swarmathon-DTCC
-tar -cvzf Swarmathon-SIPI.tar.gz Swarmathon-SIPI
-tar -cvzf Swarmathon-UH.tar.gz Swarmathon-UH
-tar -cvzf Swarmathon-CNM.tar.gz Swarmathon-CNM
-tar -cvzf Swarmathon-FSU.tar.gz Swarmathon-FSU
-tar -cvzf Swarmathon-NTU.tar.gz Swarmathon-NTU
-tar -cvzf Swarmathon-SJC-UHCL.tar.gz Swarmathon-SJC-UHCL
-tar -cvzf Swarmathon-UPRA.tar.gz Swarmathon-UPRA
-tar -cvzf Swarmathon-FIU.tar.gz Swarmathon-FIU
-tar -cvzf Swarmathon-UDC.tar.gz Swarmathon-UDC
+for filename in ./*.tar.gz; do
+  dir=$(basename "$filename" .tar.gz)
+  tar -cvzf $dir.tar.gz $dir
+  rm -rf $dir
+done
 
-tar -cvzf Swarmathon-ROS.tar.gz Swarmathon-ROS
-
-rm -rf !(*.tar.gz)
 
 # Virtual teams
-cd ~/virtualTeams2017/
+cd ~/git/iAnt-Swarmie/virtualTeams2017/
 git clone git@github.com:BCLab-UNM/Swarmathon-CSUF.git
 git clone git@github.com:BCLab-UNM/Swarmathon-CCNY.git
 git clone git@github.com:BCLab-UNM/Swarmathon-COS.git
@@ -75,25 +55,10 @@ git clone git@github.com:BCLab-UNM/Swarmathon-UVI.git
 git clone git@github.com:BCLab-UNM/Swarmathon-Wilberforce.git
 git clone git@github.com:BCLab-UNM/Swarmathon-WSSU.git
 
-tar -cvzf Swarmathon-CSUF.tar.gz Swarmathon-CSUF
-tar -cvzf Swarmathon-CCNY.tar.gz Swarmathon-CCNY
-tar -cvzf Swarmathon-COS.tar.gz Swarmathon-COS
-tar -cvzf Swarmathon-CSU.tar.gz Swarmathon-CSU
-tar -cvzf Swarmathon-DSU.tar.gz Swarmathon-DSU
-tar -cvzf Swarmathon-EPCC.tar.gz Swarmathon-EPCC
-tar -cvzf Swarmathon-Fisk.tar.gz Swarmathon-Fisk
-tar -cvzf Swarmathon-GSU.tar.gz Swarmathon-GSU
-tar -cvzf Swarmathon-UIPR.tar.gz Swarmathon-UIPR
-tar -cvzf Swarmathon-LU.tar.gz Swarmathon-LU
-tar -cvzf Swarmathon-MC.tar.gz Swarmathon-MC
-tar -cvzf Swarmathon-Norco.tar.gz Swarmathon-Norco
-tar -cvzf Swarmathon-PUPR.tar.gz Swarmathon-PUPR
-tar -cvzf Swarmathon-UHD.tar.gz Swarmathon-UHD
-tar -cvzf Swarmathon-UHH.tar.gz Swarmathon-UHH
-tar -cvzf Swarmathon-UNCP.tar.gz Swarmathon-UNCP
-tar -cvzf Swarmathon-UPRM.tar.gz Swarmathon-UPRM
-tar -cvzf Swarmathon-UVI.tar.gz Swarmathon-UVI
-tar -cvzf Swarmathon-Wilberforce.tar.gz Swarmathon-Wilberforce
-tar -cvzf Swarmathon-WSSU.tar.gz Swarmathon-WSSU
+for filename in ./*.tar.gz; do
+  dir=$(basename "$filename" .tar.gz)
+  tar -cvzf $dir.tar.gz $dir
+  rm -rf $dir
+done
 
-rm -rf !(*.tar.gz)
+# rm -rf !(*.tar.gz)

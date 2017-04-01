@@ -60,5 +60,3 @@ for filename in ./*.tar.gz; do
   tar -cvzf $dir.tar.gz $dir
   rm -rf $dir
 done
-
-# rm -rf !(*.tar.gz)

@@ -6,7 +6,6 @@ git clone git@github.com:BCLab-UNM/Swarmathon-CSUCI.git
 git clone git@github.com:BCLab-UNM/Swarmathon-JSU.git
 git clone git@github.com:BCLab-UNM/Swarmathon-PCC.git
 git clone git@github.com:BCLab-UNM/Swarmathon-TAMIU.git
-git clone git@github.com:BCLab-UNM/Swarmathon-UPRM.git
 git clone git@github.com:BCLab-UNM/Swarmathon-Cabrillo.git
 git clone git@github.com:BCLab-UNM/Swarmathon-CSULA.git
 git clone git@github.com:BCLab-UNM/Swarmathon-Morehouse.git

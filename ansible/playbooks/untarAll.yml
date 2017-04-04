@@ -1,0 +1,12 @@
+---
+- hosts: final_arena_2
+  remote_user: swarmie
+
+  tasks:
+    - name: copy shell script
+      copy: src=../../scripts/untarAll.sh dest=/home/swarmie/ owner=swarmie mode=0755
+
+    - name: run shell script
+      shell: /home/swarmie/untarAll.sh
+      args:
+        chdir: /home/swarmie/physicalTeams2017

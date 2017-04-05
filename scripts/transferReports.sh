@@ -10,8 +10,8 @@ for filename in ./*.tar.gz; do
   dir=$(basename "$filename" .tar.gz)
 
   if [ -d $dir/reports/ ]; then
-    mkdir ~/Dropbox/2017\ Swarmathon\ Outreach\ Reports/$dir/
-    cp $dir/reports/* ~/Dropbox/2017\ Swarmathon\ Outreach\ Reports/$dir/
+    mkdir ~/Dropbox/2017\ Swarmathon\ Technical\ Reports/$dir/
+    cp $dir/reports/* ~/Dropbox/2017\ Swarmathon\ Technical\ Reports/$dir/
   else
     phMissing+="$dir\n"
   fi
@@ -26,8 +26,8 @@ for filename in ./*.tar.gz; do
   dir=$(basename "$filename" .tar.gz)
 
   if [ -d $dir/reports/ ]; then
-    mkdir ~/Dropbox/2017\ Swarmathon\ Outreach\ Reports/$dir/
-    cp $dir/reports/* ~/Dropbox/2017\ Swarmathon\ Outreach\ Reports/$dir/
+    mkdir ~/Dropbox/2017\ Swarmathon\ Technical\ Reports/$dir/
+    cp $dir/reports/* ~/Dropbox/2017\ Swarmathon\ Technical\ Reports/$dir/
   else
     vMissing+="$dir\n"
   fi

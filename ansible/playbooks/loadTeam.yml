@@ -1,5 +1,5 @@
 ---
-- hosts: R13
+- hosts: prelim_arena_1
   remote_user: swarmie
 
   vars_prompt:
@@ -8,17 +8,19 @@
       private: no
 
   tasks:
-    - name: reboot robot
+    - name: reboot robots
       command: reboot
+      become: yes
       async: 0
       poll: 0
 
-    - name: wait for robot to reboot
+    - name: wait for robots to reboot
       wait_for: >
         host="{{inventory_hostname}}"
         port=22
         delay=15
         timeout=60
+      delegate_to: localhost
 
     - name: remove existing rover_workspace
       file: path=/home/swarmie/rover_workspace state=absent

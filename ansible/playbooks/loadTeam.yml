@@ -8,16 +8,20 @@
       private: no
 
   tasks:
+    - name: reboot robot
+      command: reboot
+      async: 0
+      poll: 0
+
+    - name: wait for robot to reboot
+      wait_for: >
+        host="{{inventory_hostname}}"
+        port=22
+        delay=15
+        timeout=60
+
     - name: remove existing rover_workspace
       file: path=/home/swarmie/rover_workspace state=absent
 
     - name: move {{team}}'s archive to home directory
-      command: cp /home/swarmie/physicalTeams2017/Swarmathon-{{team}}.tar.gz /home/swarmie/Swarmathon-{{team}}.tar.gz
-
-    - name: decompress {{team}}'s archives
-      shell: tar -xvzf /home/swarmie/Swarmathon-{{team}}.tar.gz
-      # It is more apporpriate to use the unarchive ansible module, however,
-      #   the remote_src argument does not seem to work currently.
-
-    - name: remove tar file in home directory
-      file: path=/home/swarmie/Swarmathon-{{team}}.tar.gz state=absent
+      command: cp /home/swarmie/physicalTeams2017/Swarmathon-{{team}} /home/swarmie/Swarmathon-{{team}}

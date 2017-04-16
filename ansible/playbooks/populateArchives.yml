@@ -1,14 +1,21 @@
 ---
-- hosts: R13
+- hosts: R02
   remote_user: swarmie
   tasks:
-    - name: copy uncompiled code archives
+    - name: remove existing physicalTeams2017/
+      file: path=/home/swarmie/physicalTeams2017/ state=absent
+
+    - name: copy uncompiled physicalTeams2017/
       copy: src=/Users/JakeNichol/git/iAnt-Swarmie/physicalTeams2017/ dest=/home/swarmie/physicalTeams2017/ owner=swarmie mode=0755
 
     - name: copy build script
       copy: src=../../scripts/buildAllTeams.sh dest=/home/swarmie/ owner=swarmie mode=0755
 
-    - name: build all teams
-      shell: /home/swarmie/buildAllTeams.sh
-      args:
-        chdir: /home/swarmie/physicalTeams2017
+    #Currently, this section does not work as intended.
+    #It appears that when catkin build is run in the build script from ansible,
+    #it silently fails.  The build script successfully runs outside of ansible,
+    #even via ssh.
+    # - name: build all teams
+    #   shell: /home/swarmie/buildAllTeams.sh
+    #   args:
+    #     chdir: /home/swarmie/physicalTeams2017

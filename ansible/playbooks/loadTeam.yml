@@ -26,4 +26,4 @@
       file: path=/home/swarmie/rover_workspace state=absent
 
     - name: move {{team}}'s archive to home directory
-      command: cp /home/swarmie/physicalTeams2017/Swarmathon-{{team}} /home/swarmie/Swarmathon-{{team}}
+      command: cp -r /home/swarmie/physicalTeams2017/Swarmathon-{{team}} /home/swarmie/Swarmathon-{{team}}
